@@ -7,3 +7,14 @@ print(result)
 array.sort()
 
 print(array)
+
+array_key = [('바나나', 2), ('메론', 10), ('사과', 4), ('당근', 3), ('고추', 1)]
+
+
+def setting(data):
+    return data[1]
+
+
+result = sorted(array_key, key=setting)
+
+print(result)
