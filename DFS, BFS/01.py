@@ -1,13 +1,10 @@
-
-def bfs(graph, v, visited):
-
+def dfs(graph, v, visited):
     visited[v] = True
-
     print(v, end=" ")
 
     for i in graph[v]:
         if not visited[i]:
-            visited[i] = True
+            dfs(graph, i, visited)
 
 
 graph = [
@@ -22,7 +19,6 @@ graph = [
     [1, 7]
 ]
 
-
 visited = [False] * 9
 
-bfs(graph, 1, visited)
+dfs(graph, 1, visited)
