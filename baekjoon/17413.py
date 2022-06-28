@@ -2,18 +2,30 @@ import sys
 sys.stdin = open('17413.txt')
 
 words = sys.stdin.readline().rstrip()
-print(words)
-a = ""
-answer = ""
-# 도전중
-for i in range(len(words)):
 
-    if words[i] == " " or i > len(words):
-        answer += a[::-1]
-        a = ""
-    else:
+tag = False
+word = ''
+result = ''
+for i in words:
+    # 뒤집어서 출력
+    if tag == False:
+        if i == '<':
+            tag = True
+            word = word+i
+        # 중간점검
+        elif i == ' ':
+            word = word+i
+            result = result+word
+            word = ''
+        else:
+            word = i+word
 
-        a += words[i]
-    print(a)
+    # 정상적으로 출력
+    elif tag == True:
+        word = word+i
+        if i == '>':
+            tag = False
+            result = result+word
+            word = ''
 
-print(answer)
+print(result+word)
