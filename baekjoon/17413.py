@@ -11,10 +11,10 @@ for i in words:
     if tag == False:
         if i == '<':
             tag = True
-            word = word+i
+            word += i
         # 중간점검
         elif i == ' ':
-            word = word+i
+            word += i
             result = result+word
             word = ''
         else:
