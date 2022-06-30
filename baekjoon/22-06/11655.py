@@ -2,18 +2,22 @@ import sys
 sys.stdin = open('11655.txt')
 
 words = sys.stdin.readline().rstrip()
-print(words[3])
 result = ""
 for word in words:
     if word.isalpha():
         if word.isupper():
-            print('U')
-            print(word)
+            trans_word = ord(word) + 13
+            if trans_word > ord('Z'):
+                result += chr(trans_word - ord('Z') + ord('A') - 1)
+            else:
+                result += chr(trans_word)
         else:
-            print('L')
-            print(word)
+            trans_word = ord(word) + 13
+            if trans_word > ord('z'):
+                result += chr(trans_word - ord('z') + ord('a') - 1)
+            else:
+                result += chr(trans_word)
 
-        result += chr(ord(word) + 13)
     else:
         result += word
 
