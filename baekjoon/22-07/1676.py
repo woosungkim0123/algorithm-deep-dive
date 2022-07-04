@@ -3,9 +3,9 @@ sys.stdin = open('1676.txt')
 
 n = int(sys.stdin.readline())
 
+count = 0
+while n >= 5:
+    count += n // 5
+    n //= 5
 
-result = 1
-for i in range(1, n+1):
-    result *= i
-
-print(result)
+print(count)
