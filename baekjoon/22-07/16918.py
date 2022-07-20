@@ -1,28 +1,43 @@
-
 from collections import deque
 import sys
 sys.stdin = open('16918.txt')
-input = sys.stdin.readline
-
 r, c, n = map(int, input().split())
-board = [list(input().strip()) for i in range(r)]
-zero_board = board = [[0] * r for _ in range(r)]
-count = 1
-q = []
-print(board)
-while count != 3:
-    if count == 1:
-        q = deque()
+data = [list(input()) for _ in range(r)]
+print(data)
+dx = [1, 0, -1, 0]
+dy = [0, 1, 0, -1]
+q = deque()
+
+
+def bfs(q, data):
+    while q:
+        x, y = q.popleft()
+        data[x][y] = '.'
+        for i in range(4):
+            nx, ny = x+dx[i], y+dy[i]
+            if 0 <= nx < r and 0 <= ny < c and data[nx][ny] == 'O':
+                data[nx][ny] = '.'
+
+
+def simulate(time):
+    global data, q
+    if time == 1:
         for i in range(r):
             for j in range(c):
-                if board[i][j] != ".":
-                    print(i, j)
+                if data[i][j] == 'O':
                     q.append((i, j))
+    elif time % 2 == 1:
+        bfs(q, data)
+        for x in range(r):
+            for y in range(c):
+                if data[x][y] == 'O':
+                    q.append((x, y))
+    else:
+        data = [['O']*c for _ in range(r)]
 
-        count += 1
-    elif count == 2:
-        board = zero_board
-    elif count == 3:
-        while q:
-            x, y = q.popleft()
-            print(x, y)
+
+for i in range(1, n+1):
+    simulate(i)
+
+for row in data:
+    print(''.join(row))
