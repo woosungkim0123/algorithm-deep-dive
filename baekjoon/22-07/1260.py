@@ -1,40 +1,46 @@
-from collections import deque
+# 22-07-21 [1, 2]
 
+
+from collections import deque
 import sys
 sys.stdin = open('1260.txt')
 
-n, m, v = map(int, sys.stdin.readline().split())
+input = sys.stdin.readline
+
+n, m, v = map(int, input().rstrip().split())
 
 
-graph = [[] for _ in range(n+1)]
-visited = [False] * (n+1)
+graph = [[] for _ in range(n + 1)]
 
-for i in range(m):
-    a, b = map(int, sys.stdin.readline().split())
-    graph[a].append(b)
-    graph[b].append(a)
+for _ in range(m):
+    x, y = map(int, input().rstrip().split())
+    graph[x].append(y)
+    graph[y].append(x)
 
-for i in range(1, n+1):
+for i in range(len(graph)):
     graph[i].sort()
 
 
-def dfs(x):
-    visited[x] = True
-    print(x, end=' ')
-    for i in graph[x]:
+visited = [False] * (n+1)
+
+
+def dfs(start):
+    print(start, end=" ")
+    visited[start] = True
+    for i in graph[start]:
         if not visited[i]:
             dfs(i)
 
 
-def bfs(x):
-    visited[x] = True
-    queue = deque([x])
-    while queue:
-        x = queue.popleft()
-        print(x, end=' ')
-        for i in graph[x]:
+def bfs(start):
+    q = deque([start])
+    visited[start] = True
+    while q:
+        num = q.popleft()
+        print(num, end=" ")
+        for i in graph[num]:
             if not visited[i]:
-                queue.append(i)
+                q.append(i)
                 visited[i] = True
 
 
