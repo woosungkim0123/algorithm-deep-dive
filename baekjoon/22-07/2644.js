@@ -20,7 +20,6 @@ for (let i = 0; i < m; i++) {
 const bfs = (graph, startNode, targetNode) => {
   const visited = [];
   let needVisit = [[startNode, 0]];
-  console.log(needVisit);
   while (needVisit.length !== 0) {
     const [node, cnt] = needVisit.shift();
     if (node === targetNode) return cnt;
