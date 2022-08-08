@@ -12,7 +12,7 @@ function fibo(x) {
 
 console.log(fibo(6));
 */
-// 보텀업 방식 사용
+// 보텀업 방식 사용 하기
 
 d[1] = 1;
 d[2] = 1;
