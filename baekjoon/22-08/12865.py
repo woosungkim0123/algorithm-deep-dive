@@ -1,11 +1,17 @@
 import sys
 sys.stdin = open('12865.txt')
 
-input = sys.stdin.readline
+read = sys.stdin.readline
 
-n, k = map(int, input().rstrip().split())
-print(n, k)
-dp = [0] * (k + 1)
-for _ in range(n):
-    w, v = map(int, input().split())
-    print(w, v)
+N, K = map(int, read().split())  # 4 , 7
+cache = {0: 0}
+
+for _ in range(N):
+    curr_w, curr_v = map(int, read().split())
+    temp = {}
+    for w, v in cache.items():
+        print(cache.get(curr_w + w, 0))
+        if curr_w + w <= K and curr_v + v > cache.get(curr_w + w, 0):
+            temp[curr_w + w] = curr_v + v
+    cache.update(temp)
+print(max(cache.values()))
