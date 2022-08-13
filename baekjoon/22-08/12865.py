@@ -3,15 +3,21 @@ sys.stdin = open('12865.txt')
 
 read = sys.stdin.readline
 
-N, K = map(int, read().split())  # 4 , 7
-cache = {0: 0}
 
-for _ in range(N):
-    curr_w, curr_v = map(int, read().split())
-    temp = {}
-    for w, v in cache.items():
-        print(cache.get(curr_w + w, 0))
-        if curr_w + w <= K and curr_v + v > cache.get(curr_w + w, 0):
-            temp[curr_w + w] = curr_v + v
-    cache.update(temp)
-print(max(cache.values()))
+def solve():
+    n, k = [int(x) for x in read().split()]
+    table = [0] * (k + 1)
+
+    for _ in range(n):
+        w, v = [int(x) for x in read().split()]
+        for j in range(k, 0, -1):
+
+            if j + w <= k and table[j] != 0:  # k 안에 들어와야함
+                table[j + w] = max(table[j + w], table[j] + v)
+        table[w] = max(table[w], v)
+        print(table)
+
+    print(max(table))
+
+
+solve()
