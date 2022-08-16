@@ -54,14 +54,33 @@ def bfs(start, maps, mid, end):
     dirs = [(0, 1), (0, -1), (1, 0), (-1, 0)]
     queue = deque()
     queue.append(start)
-    visited = [[False for _ in range(maps[0])] for _ in range(len(maps))]
-    print(visited)
+    visited = [[False for _ in range(len(maps[0]))] for _ in range(len(maps))]
+
     while queue:
         y, x = queue.popleft()
         visited[y][x] = True
         for dy, dx in dirs:
             ny, nx = y + dy, x + dx
-            if 0 <= ny < len(maps) and 0 <= nx < len(maps[0]) and not visited[ny][nx] and maps[ny][nx] != "L":
+            if 0 <= ny < len(maps) and 0 <= nx < len(maps[0]) and not visited[ny][nx]:
+                visited[ny][nx] = True
+                if ny == end[0] and nx == end[1]:
+                    return True
+                if time[ny][nx] <= mid:
+                    queue.append((ny, nx))
+
+    return False
 
 
-bfs()
+min, max = 0, melt_time_set(maps)
+
+answer = max
+
+while min <= max:
+    mid = (min + max) // 2
+    if bfs(birds[0], maps, mid, birds[1]):
+        answer = mid
+        max = mid - 1
+    else:
+        min = mid + 1
+
+print(answer)
