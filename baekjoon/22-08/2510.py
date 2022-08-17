@@ -1,5 +1,5 @@
 import sys
-sys.stdin = open('2510.txt')
+sys.stdin = open('3460.txt')
 
 read = sys.stdin.readline
 
