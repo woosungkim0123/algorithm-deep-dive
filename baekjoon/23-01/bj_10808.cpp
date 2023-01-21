@@ -1,24 +1,26 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-string w;
-int asc = 97;
-int arr[26];
+string str;
+// int asc = 97;
+int cnt[26];
 int main() {
 	ios_base::sync_with_stdio(false);
 	cin.tie(NULL);
 	cout.tie(NULL);
 	
-	cin >> w;
-	for(int i = 0; i < w.size(); i++) {
-		char c = w[i];
+	cin >> str;
+	for(char a : str) {
+		cnt[a - 'a']++;
+	}
+	/*
+	for(int i = 0; i < str.size(); i++) {
+		char c = str[i];
     	int n = int(c) - asc;
-    	arr[n] += 1;
+    	cnt[n] += 1;
 
 	}
-	
-	for(int i =0; i < 26; i++) {
-		cout << arr[i] << " ";
-	}
+	*/
+	for(int i =0; i < 26; i++) cout << cnt[i] << " ";
 	return 0;
 }
