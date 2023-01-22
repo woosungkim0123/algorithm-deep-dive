@@ -1,23 +1,25 @@
+
+// https://www.acmicpc.net/problem/2979
+
 #include <bits/stdc++.h>
 using namespace std;
 
-int a[4];
-int arr[104];
-int sum;
+int A, B, C, a, b, cnt[104], ret;
 
 int main () {
-	cin >> a[1] >> a[2] >> a[3];
+	cin >> A >> B >> C;
 	for (int i = 0 ; i < 3; i++) {
-		int s, e;
-		cin >> s >> e;
-		for(int j = s; j < e; j++) {
-			arr[j]++;
+		cin >> a >> b;
+		for(int j = a; j < b; j++) cnt[j]++; // a는 포함되어있고 b는 포함되어있지 않음 
+	}
+	for(int i = 1; i < 100; i++) { // 문제 최대범위가 100
+		if(cnt[i]) {
+			if(cnt[i] == 1) ret += A;
+			if(cnt[i] == 2) ret += B * 2;
+			if(cnt[i] == 3) ret += C * 3;
 		}
+		
 	}
-	for(int i = 1; i < 100; i++) {
-		if(arr[i] == 0) continue;
-		sum+= a[arr[i]] * arr[i];
-	}
-	cout << sum << "\n";
+	cout << ret << "\n";
 	return 0;
 }
