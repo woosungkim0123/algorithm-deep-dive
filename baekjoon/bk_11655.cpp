@@ -6,7 +6,7 @@ string s;
 int main() {
 	getline(cin, s);
 	for(int i = 0; i < s.size(); i++) {
-		if(s[i] >= 65 && s[i] <= 90 ) { 
+		if(s[i] >= 65 && s[i] <= 90) { 
 			if(s[i] + 13 > 90) { 
 				s[i] = s[i] + 13 - 26;
 			} else {
