@@ -4,6 +4,7 @@ int n, m;
 string s;
 map<string, int> mp;
 map<int, string> mp2;
+
 int main() {
 	ios_base::sync_with_stdio(false);
 	cin.tie(NULL);
