@@ -3,7 +3,7 @@ using namespace std;
 
 int n, k;
 int sum;
-int temp, psum[100001];
+int temp, psum[100001], ret = -10000004;
 int main() {
 	ios_base::sync_with_stdio(false);
 	cin.tie(NULL);
@@ -13,11 +13,12 @@ int main() {
 	
 	for (int i = 1; i <= n; i++) {
 		cin >> temp;
-		psum[i] = temp;
+		psum[i] = psum[i - 1] + temp;
 	}
-	for (int i = 0; i <= n; i++) {
-		cout << psum[i] << "\n";
+	for (int i = k; i <= n; i++) {
+		ret = max(ret, psum[i] - psum[i - k]);
 	}
+	cout << ret << "\n";
 
-	
+	return 0;
 }
