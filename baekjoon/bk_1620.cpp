@@ -1,3 +1,7 @@
+/*
+	https://www.acmicpc.net/problem/1620
+*/
+
 #include <bits/stdc++.h>
 using namespace std;
 int n, m;
@@ -24,8 +28,6 @@ int main() {
 			cout << mp2[atoi(s.c_str())] << "\n";
 		}
 	}
-	
-	
 	return 0;
 }
 

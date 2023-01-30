@@ -1,3 +1,6 @@
+/*
+	https://www.acmicpc.net/problem/9996
+*/
 #include <bits/stdc++.h>
 using namespace std;
 

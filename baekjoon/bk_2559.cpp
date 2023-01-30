@@ -1,8 +1,11 @@
+/*
+	https://www.acmicpc.net/problem/2559
+*/
+
 #include <bits/stdc++.h>
 using namespace std;
 
 int n, k;
-int sum;
 int temp, psum[100001], ret = -10000004;
 int main() {
 	ios_base::sync_with_stdio(false);
@@ -15,6 +18,7 @@ int main() {
 		cin >> temp;
 		psum[i] = psum[i - 1] + temp;
 	}
+	
 	for (int i = k; i <= n; i++) {
 		ret = max(ret, psum[i] - psum[i - k]);
 	}
