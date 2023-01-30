@@ -1,3 +1,6 @@
+/*
+	https://www.acmicpc.net/problem/4375
+*/
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -17,7 +20,7 @@ int main() {
 			} else {
 				cnt = (cnt * 10) + 1;
 				cnt %= n;  
-				ret++;  // 2
+				ret++;
 			}
 		}
 	}

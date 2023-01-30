@@ -5,10 +5,10 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-
 string s, ret;
 int cnt[200], flag;
 char mid;
+
 int main() {
 	ios_base::sync_with_stdio(false);
 	cin.tie(NULL);
@@ -16,11 +16,11 @@ int main() {
 	
 	cin >> s;
 	
-	for(char a : s) cnt[a]++; // 문자가 몇개 있나가 중요해서 카운팅 배열을 만들었다 
+	for(char a : s) cnt[a]++; 
 	
-	for(int i = 'Z'; i >= 'A'; i--) { // 오름차순 때문에 Z부터 붙였다. 
+	for(int i = 'Z'; i >= 'A'; i--) {
 		if(cnt[i]) {
-			if(cnt[i] & 1){ // 홀수인가? 
+			if(cnt[i] & 1){
 				mid = char(i);
 				flag++;
 				cnt[i]--; 
