@@ -1,3 +1,6 @@
+/*
+	https://www.acmicpc.net/problem/4179
+*/
 #include<bits/stdc++.h>
 using namespace std;
 
@@ -17,13 +20,11 @@ int main() {
 	cin >> n >> m;
 	queue<pair<int, int>>q;
 	fill(&fire_check[0][0], &fire_check[0][0] + 1004 * 1004, INF);
-	// INF를 안하게되면 불이 아무것도 없을때 FIRE_CHECK가 0으로 정의가됨
-	// 불이 아무것도 없다는 반례가있음. 그래서 그 부분때문에 INF사용 
 	for(int i = 0; i < n; i++) {
 		for(int j = 0; j < m; j++) {
 			cin >> a[i][j];
 			if(a[i][j] == 'F') {
-				fire_check[i][j] = 1; // 불은 여러개 (문제를 잘 읽어야함 주의) 
+				fire_check[i][j] = 1;
 				q.push({i, j});
 			} else if(a[i][j] == 'J') {
 				sy = i; sx = j;
@@ -50,7 +51,7 @@ int main() {
 	while(q.size()) {
 		tie(y, x) = q.front();
 		q.pop();
-		if(x == m - 1 || y == n - 1 || x == 0 || y == 0) { // 가장 자리에 도착하면 빠져나옴 
+		if(x == m - 1 || y == n - 1 || x == 0 || y == 0) {
 			ret = person_check[y][x];
 			break;
 		}
@@ -70,8 +71,3 @@ int main() {
 	else cout << "IMPOSSIBLE" << "\n";
 	return 0;
 }
-/*
-	불의 최단거리와 사람의 최단거리를 비교하면되지않을까? 가중치 같음 -> bfs
-	불 최단 거리 만들고  visited 배열로 만들어놓고 
-	사람의 최단거리를 구할때 if문으로 불의 최단거리를 비교해서 빠르면 전진가능하게 
-*/
