@@ -13,8 +13,8 @@ int main()
 	cin >> n >> k;
 	
 	if(n == k) {
-		puts("0"); 
-		puts("1");
+		cout << "0\n" << "1\n";
+		return 0;
 	}
 	
 	visited[n] = 1;
